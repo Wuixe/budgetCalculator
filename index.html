@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Calculator</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <h1>Budget Calculator</h1>
+    <div class="section">
+        <h2>Description</h2>
+        <p>This web app must accept input from a form and create a table with the budget of spending vs the actual spending.<br>
+        It will also show the actual green if it's under busget, red if it's over and neutral if it's excatly the amount.</p>
+    </div>
+    <h2>Enter your monthly budget informations</h2>
+    <form method="" action="" class="form" id = "budget-infos">
+        <label for="monthly-salary"class="lable-input">Enter your monthly salary</label>
+            <input type="number" class="input" name="monthly-salary" id="salary"><br>
+        <label for="gov-help"class="lable-input">Enter your monthly governmental help</label>
+            <input type="number" class="input"  name="gov-help" id="help"><br>
+        <label for="monthly-loan-repayment"class="lable-input">Enter your loan paiement</label>
+                <input type="number" name="monthly-loan-repayment" id="loan"><br>
+            <label for="rent"class="lable-input">Enter your rent</label>
+                <input type="number" class="input"  name="rent" id="rent"><br>
+        <button type="button" name="submit-earnings-and-loans" id="earnings-and-loans" class="button-17">Submit</button><br>
+        <p>
+            Your current available funds is <span id="available-funds"></span> $
+        </p>
+        <label for="groceries"class="lable-input">Budget for Groceries: <span id="groceries-value">25%</span></label>
+            <input type="range" min="0" max="50" step="1" value="25" id="groceries" oninput="updateRangeValue(this.value, 'groceries-value')">
+        <label for="fun"class="lable-input">Budget for fun: <span id="fun-value">25%</span></label>
+            <input type="range" min="0" max="50" step="1" value="25" id="fun" oninput="updateRangeValue(this.value, 'fun-value')"><br>
+        <button type="button" id="submit-budget" class="button-17">Submit</button>
+        <p> 
+            Your budget for groceries is <span id = "gorcery-budget"></span> $<br>
+            Your budget for fun is <span id = "fun-budget"></span> $<br>
+            Your left over is <span id = "leftover"></span> $
+        </p>
+    </form>
+
+    <h2>Enter your actual spending</h2>
+    <form method="" action="" class="form" id="actual-spending-infos">
+        <label for = "groceries-spending"class="lable-input">Actual groceries spending: </label>
+            <input type="number" class="input"  name = "groceries-spending" id = "groceries-spending">
+        <label for = "fun-spending"class="lable-input">Actual fun spending: </label>
+            <input type="number" class="input"  name = "fun-spending" id = "fun-spending">
+        <button type="button" name = "submit-actual-spending" class="button-17" id = "submit-actual-spending">Submit</button>
+        <p>
+            Your total actual spending is <span id="actual-spending"> $</span>
+        </p>
+    </form>
+
+    <button type="button" name = "create-table"  class="button-17" id = "create-table">Create Table</button>
+    <br><br>
+    <div id = "finance-table">
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
