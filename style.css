@@ -1,6 +1,14 @@
-* {
+/* Add font imports */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+html {
     background-color: black;
     color: white;
+}
+
+p {
+  background: none;
 }
 
 h1 {
@@ -16,20 +24,83 @@ h1 {
   background: linear-gradient(to right, rgb(74, 114, 165), rgb(111, 75, 155));
 }
 
-h2 {
-  font: 600 1.75em 'Raleway', sans-serif;
-  background:rgb(111, 75, 155);
-  text-transform: uppercase;
-  -webkit-text-stroke: 2px black;
-  border-radius: 2rem;
-  align-self: center;
-  padding: 1rem;
+/* Standard box*/
+:root {
+  font-size: 16px;
 }
 
-.section {
+.container {
+  margin: 5rem 1rem;
+  background-color: #2d2d2d;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  display: flex;
   flex-direction: column;
-  display : flex;
+  align-items: center;
+  box-shadow: 0 0 2rem #cfcfcf;
+  animation: fadeIn 0.5s ease-in-out;
+  position: relative;
+}
 
+.title {
+  display: inline-block;
+  background-color: #1b5e20;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 0.9375rem 1.5625rem;
+  border-radius: 2.5rem;
+  position: absolute;
+  top: -2rem;
+  left: 1rem;
+  border: 0.0625rem solid #ffffff;
+  text-shadow: 0.0625rem 0.0625rem #2d2d2d;
+  width: 12rem;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*Form*/
+
+.form-group {
+  margin-bottom: 1.25rem;
+  padding: 5rem 2rem 2rem 2rem;
+}
+
+.form-control {
+  
+  font-size: 0.875rem;
+  border-radius: 0.3125rem;
+  color: #ffffff;
+  background-color: #2d2d2d;
+}
+
+.input-group {
+  display : flex;
+  flex-direction: column;
+}
+
+.input-group div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 input {
@@ -60,16 +131,16 @@ td, th {
 
 
 
-/* CSS */
+/* Button presets */
 .button-17 {
   align-items: center;
   appearance: none;
-  background-color: #fff;
+  background-color: #1b5e20;
   border-radius: 24px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
   box-sizing: border-box;
-  color: #3c4043;
+  color: #ffffff;
   cursor: pointer;
   display: inline-flex;
   fill: currentcolor;
