@@ -81,27 +81,31 @@ h1 {
 
 .form-group {
   margin-bottom: 1.25rem;
-  padding: 5rem 2rem 2rem 2rem;
-}
-
-.form-control {
-  
-  font-size: 0.875rem;
-  border-radius: 0.3125rem;
-  color: #ffffff;
-  background-color: #2d2d2d;
+  padding: 5rem 0rem 0rem 0rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .input-group {
-  display : flex;
-  flex-direction: column;
+  display : grid;
+  grid-template-columns: 1fr 1fr; 
+  margin: auto;
+  width: 100%;
+
+}
+
+.bottom {
+  padding: 0rem 0rem 3rem 0rem;
 }
 
 .input-group div {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   margin-bottom: 1rem;
 }
+
 
 input {
     color: black;
@@ -129,7 +133,9 @@ td, th {
     border-color: black;
 }
 
-
+.btn, p {
+  margin: auto;
+}
 
 /* Button presets */
 .button-17 {

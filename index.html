@@ -16,40 +16,43 @@
       </div>
     
     <div class = "container">
-    <h2 class = "title">Enter your monthly budget informations</h2>
-        <form method="" action="" class="form-group form-control" id = "budget-infos">
-            <div class = "content input-group"> 
-                <div>
-                    <label for="monthly-salary"class="lable-input">Enter your monthly salary</label>
-                    <input type="number" class="input" name="monthly-salary" id="salary"><br>
+        <h2 class = "title">Enter your monthly budget informations</h2>
+        <form method="" action="" class="" id = "budget-infos">
+
+            <div class = "content form-group"> 
+                <div class = "input-group">
+                        
+                    <div><label for="monthly-salary"class="lable-input">Enter your monthly salary</label></div>
+                    <div><input type="number" class="input" name="monthly-salary" id="salary"><br></div>
+                    
+                    
+                    <div><label for="gov-help"class="lable-input">Enter your monthly governmental help</label></div>
+                    <div><input type="number" class="input"  name="gov-help" id="help"><br></div>
+                
+                
+                    <div><label for="monthly-loan-repayment"class="lable-input">Enter your loan paiement</label></div>
+                    <div><input type="number" name="monthly-loan-repayment" id="loan"><br></div>
+                    
+                
+                    <div><label for="rent"class="lable-input">Enter your rent</label></div>
+                    <div><input type="number" class="input"  name="rent" id="rent"></div>
                 </div>
-                <div>
-                    <label for="gov-help"class="lable-input">Enter your monthly governmental help</label>
-                    <input type="number" class="input"  name="gov-help" id="help"><br>
-                </div>
-                <div>
-                    <label for="monthly-loan-repayment"class="lable-input">Enter your loan paiement</label>
-                    <input type="number" name="monthly-loan-repayment" id="loan"><br>
-                </div>
-                <div>
-                    <label for="rent"class="lable-input">Enter your rent</label>
-                    <input type="number" class="input"  name="rent" id="rent"><br>
-                </div>
-                <button type="button" name="submit-earnings-and-loans" id="earnings-and-loans" class="button-17">Submit</button><br>
+
+                <button type="button" name="submit-earnings-and-loans" id="earnings-and-loans" class="button-17 btn">Submit</button>
                 <p>
                     Your current available funds is <span id="available-funds"></span> $
                 </p>
             </div>
-            <div class = "content input-group"> 
-                <div>
-                    <label for="groceries"class="lable-input">Budget for Groceries: <span id="groceries-value">25%</span></label>
-                    <input type="range" min="0" max="50" step="1" value="25" id="groceries" oninput="updateRangeValue(this.value, 'groceries-value')">
+
+            <div class = "content form-group bottom"> 
+                <div class = "input-group">
+                    <div><label for="groceries"class="lable-input">Budget for Groceries: <span id="groceries-value">25%</span></label></div>
+                    <div><input type="range" min="0" max="50" step="1" value="25" id="groceries" oninput="updateRangeValue(this.value, 'groceries-value')"></div>
+                
+                    <div><label for="fun"class="lable-input">Budget for fun: <span id="fun-value">25%</span></label></div>
+                    <div><input type="range" min="0" max="50" step="1" value="25" id="fun" oninput="updateRangeValue(this.value, 'fun-value')"></div>   
                 </div>
-                <div>
-                    <label for="fun"class="lable-input">Budget for fun: <span id="fun-value">25%</span></label>
-                    <input type="range" min="0" max="50" step="1" value="25" id="fun" oninput="updateRangeValue(this.value, 'fun-value')"><br>    
-                </div>
-                <button type="button" id="submit-budget" class="button-17">Submit</button>
+                <button type="button" id="submit-budget" class="button-17 btn">Submit</button>
                 <p> 
                     Your budget for groceries is <span id = "gorcery-budget"></span> $<br>
                     Your budget for fun is <span id = "fun-budget"></span> $<br>
@@ -59,18 +62,23 @@
         </form>
     </div>
     
-
-    <h2>Enter your actual spending</h2>
-    <form method="" action="" class="form" id="actual-spending-infos">
-        <label for = "groceries-spending"class="lable-input">Actual groceries spending: </label>
-            <input type="number" class="input"  name = "groceries-spending" id = "groceries-spending">
-        <label for = "fun-spending"class="lable-input">Actual fun spending: </label>
-            <input type="number" class="input"  name = "fun-spending" id = "fun-spending">
-        <button type="button" name = "submit-actual-spending" class="button-17" id = "submit-actual-spending">Submit</button>
-        <p>
-            Your total actual spending is <span id="actual-spending"> $</span>
-        </p>
-    </form>
+    <div class = "container">
+        <h2 class="title">Enter your actual spending</h2>
+        <form method="" action="" class="form" id="actual-spending-infos">
+            <div class = "content form-group">
+                <div class = "input-group">
+                   <div> <label for = "groceries-spending"class="lable-input">Actual groceries spending: </label></div>
+                        <div><input type="number" class="input"  name = "groceries-spending" id = "groceries-spending"></div>
+                    <div><label for = "fun-spending"class="lable-input">Actual fun spending: </label></div>
+                        <div><input type="number" class="input"  name = "fun-spending" id = "fun-spending"></div>
+                </div>
+                <button type="button" name = "submit-actual-spending" class="button-17 btn" id = "submit-actual-spending">Submit</button>
+                <p>
+                    Your total actual spending is <span id="actual-spending"> $</span>
+                </p>
+            </div>
+        </form>
+    </div>
 
     <button type="button" name = "create-table"  class="button-17" id = "create-table">Create Table</button>
     <br><br>
