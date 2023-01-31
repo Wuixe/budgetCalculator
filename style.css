@@ -112,20 +112,28 @@ input {
     background-color: white;
 }
 
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: auto;
+}
+
 table {
     border-collapse: collapse;
-    color: black;
 }
 td, th {
+    
+    padding: 1em;
     color: black;
-   border : 1px solid;
-   border-color: black;
+   border : 2px solid;
+   border-color: none;
    background-color: aliceblue;
 }
 
 .blank {
     border: none;
-    background-color: black;
+    background: none;
 }
 
 .negative {
