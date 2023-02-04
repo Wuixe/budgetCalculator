@@ -1,12 +1,74 @@
-import React from "react";
+import React, { Component } from 'react';
 
-const Form = () => {
+class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: props.initialData
+    };
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      data: {
+        ...this.state.data,
+        [event.target.name]: event.target.value
+      }
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSubmit(this.state.data);
+  };
+
+  render() {
     return (
+      <form onSubmit={this.handleSubmit}>
         <div>
-            <h2>This is a Form</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <label htmlFor="income">income:</label>
+          <input
+            type="text"
+            id="income"
+            name="income"
+            value={this.state.data.income}
+            onChange={this.handleChange}
+          />
         </div>
+        <div>
+          <label htmlFor="fixedCharges">fixedCharges:</label>
+          <input
+            type="text"
+            id="fixedCharges"
+            name="fixedCharges"
+            value={this.state.data.fixedCharges}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="budgets">budgets:</label>
+          <input
+            type="text"
+            id="budgets"
+            name="budgets"
+            value={this.state.data.budgets}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="spendings">spendings:</label>
+          <input
+            type="text"
+            id="spendings"
+            name="spendings"
+            value={this.state.data.spendings}
+            onChange={this.handleChange}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     );
-};
+  }
+}
 
 export default Form;
