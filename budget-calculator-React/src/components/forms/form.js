@@ -3,6 +3,7 @@ import Income from "./income";
 import FixedCharges from './fixedCharges';
 import Budgets from './budget';
 import Spendings from './spendings';
+import AddImputButton from './addImputButton';
 
 class Form extends Component {
   constructor(props) {
@@ -20,14 +21,22 @@ class Form extends Component {
   };
 
   handleChange = (event) => {
-    this.setState({
+    const { currentPage } = this.state;
+    const CurrentPage = this.pages[currentPage];
+    const stateID = CurrentPage.id;
+    const { name, value } = event.target;
+    
+    this.setState(prevState => ({
       data: {
-        ...this.state.data,
-        [event.target.name]: event.target.value
+        ...prevState.data,
+        [stateID]: {
+          ...prevState.data[stateID],
+          [name]: value
+        }
       }
-    });
-  };
+    }));
 
+  };
  
   handleSubmit = (event) => {
     event.preventDefault();
@@ -45,11 +54,13 @@ class Form extends Component {
         <p>Enter {CurrentPage.name} :</p>
         <input
           type={CurrentPage.inputType}
-          name={CurrentPage.name}
-          value={data[stateID]}
+          name='main'
+          value={data[stateID].main}
           onChange={this.handleChange}
           />
+          {/* <AddImputButton CurrentPage={CurrentPage} data={data} handleChange = {this.handleChange} /><br/> */}
           <button type="submit">Submit</button>
+          <p>{JSON.stringify(this.state.data)}</p>
       </form>
 
     )

@@ -9,10 +9,10 @@ class App extends Component {
   state = {
     currentPage: 0,
     data: {
-      income: '',
-      fixedCharges: '',
-      budgets: '',
-      spendings: ''
+      income: {},
+      fixedCharges: {},
+      budgets: {},
+      spendings: {}
     }  
   };
 
@@ -46,7 +46,7 @@ class App extends Component {
             ((currentPage + 1) % this.pages.length)}>Next Page</button>
        <CurrentPage initialData= {data} onSubmit={this.setData}/>
        <p>{JSON.stringify(this.state.data)}</p>
-       <DisplayData data = {data}/>
+       {/* <DisplayData data = {data}/> */}
       </div>
     );
   }

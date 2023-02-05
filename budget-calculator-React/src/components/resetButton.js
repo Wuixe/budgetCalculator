@@ -3,10 +3,10 @@ import React, {Component} from "react";
 class resetButton extends Component {
     
         data = {
-            income: '',
-            fixedCharges: '',
-            budgets: '',
-            spendings: ''
+          income: {},
+          fixedCharges: {},
+          budgets: {},
+          spendings: {}
           };  
 
       handleClick = (event) => {
