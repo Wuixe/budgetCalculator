@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
+import Income from "./income";
+import FixedCharges from './fixedCharges';
+import Budgets from './budget';
+import Spendings from './spendings';
 
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentPage: 0,
       data: props.initialData
     };
   }
+
+  pages = [Income,FixedCharges, Budgets, Spendings];
+
+  changePage = page => {
+    this.setState({ currentPage: page });
+  };
 
   handleChange = (event) => {
     this.setState({
@@ -17,57 +28,31 @@ class Form extends Component {
     });
   };
 
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit(this.state.data);
+    this.changePage((this.state.currentPage + 1) % this.pages.length)
   };
 
   render() {
+    const { currentPage, data } = this.state;
+    const CurrentPage = this.pages[currentPage];
+    const stateID = CurrentPage.id;
+    
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="income">income:</label>
-          <input
-            type="text"
-            id="income"
-            name="income"
-            value={this.state.data.income}
-            onChange={this.handleChange}
+        <p>Enter {CurrentPage.name} :</p>
+        <input
+          type={CurrentPage.inputType}
+          name={CurrentPage.name}
+          value={data[stateID]}
+          onChange={this.handleChange}
           />
-        </div>
-        <div>
-          <label htmlFor="fixedCharges">fixedCharges:</label>
-          <input
-            type="text"
-            id="fixedCharges"
-            name="fixedCharges"
-            value={this.state.data.fixedCharges}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="budgets">budgets:</label>
-          <input
-            type="text"
-            id="budgets"
-            name="budgets"
-            value={this.state.data.budgets}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="spendings">spendings:</label>
-          <input
-            type="text"
-            id="spendings"
-            name="spendings"
-            value={this.state.data.spendings}
-            onChange={this.handleChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
       </form>
-    );
+
+    )
   }
 }
 
