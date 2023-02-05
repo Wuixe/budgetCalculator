@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Intro from '../components/Intro';
-import Form from '../components/form';
+import Form from '../components/forms/form';
 import Table from '../components/table';
 import DisplayData from '../components/displayData.js';
+import ResetButton from '../components/resetButton';
 
 class App extends Component {
   state = {
@@ -17,11 +18,11 @@ class App extends Component {
 
   pages = [Intro, Form, Table];
 
-  handleClick = page => {
+  changePage = page => {
     this.setState({ currentPage: page });
   };
 
-  handleSubmit = (updatedData) => {
+  setData = (updatedData) => {
     this.setState({ data: updatedData });
   };
 
@@ -35,15 +36,15 @@ class App extends Component {
         <h1>Your Budget Calculator</h1>
         <button
           onClick={() =>
-            this.handleClick
+            this.changePage
             ((currentPage - 1 + this.pages.length) % this.pages.length)}>Previous Page</button>
-        <button onClick={() => this.handleClick(0)}>Home</button>
-        <button onClick={() => this.handleClick(1)}>Reset</button>
+        <button onClick={() => this.changePage(0)}>Home</button>
+        <ResetButton setData = {this.setData} setPage = {this.changePage}/>
         <button
           onClick={() =>
-            this.handleClick
+            this.changePage
             ((currentPage + 1) % this.pages.length)}>Next Page</button>
-       <CurrentPage initialData= {data} onSubmit={this.handleSubmit}/>
+       <CurrentPage initialData= {data} onSubmit={this.setData}/>
        <p>{JSON.stringify(this.state.data)}</p>
        <DisplayData data = {data}/>
       </div>
