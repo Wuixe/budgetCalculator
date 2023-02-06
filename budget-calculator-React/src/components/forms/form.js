@@ -21,9 +21,7 @@ class Form extends Component {
   };
 
   handleChange = (event) => {
-    const { currentPage } = this.state;
-    const CurrentPage = this.pages[currentPage];
-    const stateID = CurrentPage.id;
+   const stateID = this.pages[this.state.currentPage].id;
     const { name, value } = event.target;
     
     this.setState(prevState => ({
@@ -47,7 +45,8 @@ class Form extends Component {
   render() {
     const { currentPage, data } = this.state;
     const CurrentPage = this.pages[currentPage];
-    const stateID = CurrentPage.id;
+    // const stateID = CurrentPage.id;
+    // let placeholder = '';
     
     return (
       <form onSubmit={this.handleSubmit}>
@@ -55,10 +54,11 @@ class Form extends Component {
         <input
           type={CurrentPage.inputType}
           name='main'
-          value={data[stateID].main}
+          // value={placeholder}
+          // value={data[stateID].main}
           onChange={this.handleChange}
           />
-          {/* <AddImputButton CurrentPage={CurrentPage} data={data} handleChange = {this.handleChange} /><br/> */}
+          <AddImputButton handleChange = {this.handleChange} /><br/>
           <button type="submit">Submit</button>
           <p>{JSON.stringify(this.state.data)}</p>
       </form>
