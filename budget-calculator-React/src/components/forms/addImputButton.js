@@ -20,6 +20,8 @@ class AddImputButton extends Component {
     let inputArray = [...this.state.inputArray];
     inputArray[index].value = e.target.value;
     this.setState({ inputArray });
+    this.props.handleChange(e);
+    <p>{JSON.stringify(e.id)}</p>
   };
 
   addInput = () => {
@@ -36,21 +38,31 @@ class AddImputButton extends Component {
   };
   
 
-  renderInput = (input, index) => {
+  enterValue = (input, index) => {
+    return (<div>
+      <p>Enter Value</p>
+      <input value={input.value} id={this.state.inputArray.name} onChange={e => this.handleValueChange(e, index)} />
+      <br />
+  </div>   
+  )
+
+  }
+
+  enterName = (input, index) => {
     return (
       <div key={index}>
         <p>Enter Name</p>
         <input value={input.name} onChange={e => this.handleNameChange(e, index)} />
-        <p>Enter Value</p>
-        <input value={input.value} onChange={e => this.handleValueChange(e, index)} />
-        <br />
+        <button type="button" onClick={(input, index) => this.enterValue(input, index)}>add</button> 
       </div>
     );
   };
+
+
   render() {
     return (
       <div>
-        {this.state.showInputs ? this.state.inputArray.map((input, index) => this.renderInput(input, index)) : null}
+        {this.state.showInputs ? this.state.inputArray.map((input, index) => this.enterName(input, index)) : null}
         <br />
         <button type="button" onClick={this.addInput}>
           Add Input

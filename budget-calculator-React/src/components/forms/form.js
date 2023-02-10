@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Income from "./income";
-import FixedCharges from './fixedCharges';
-import Budgets from './budget';
-import Spendings from './spendings';
+import Income from './Categories/income';
+import FixedCharges from './Categories/fixedCharges';
+import Budgets from './Categories/budget';
+import Spendings from './Categories/spendings';
 import AddImputButton from './addImputButton';
 
 class Form extends Component {
