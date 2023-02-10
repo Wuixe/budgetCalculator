@@ -1,86 +1,64 @@
 import React, { Component } from "react";
 
 class AddImputButton extends Component {
-
-constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-        inputName: ['input0'],
-        inputState: 0,
-        inputNumber : 0
-    }
-}
+      inputArray: [{ name: "", value: "" }],
+      currentInput: 0,
+      showInputs: false
+    };
+  }
 
-switchState = () => {
-    if (this.state.inputState === 2) {
-        this.setState(prevState => {
-            return {
-              inputNumber: prevState.inputNumber + 1,
-              inputName: [...prevState.inputName, 'input' + (Number(prevState.inputNumber) + 1)],
-              inputState : 0
-            };
-          }); 
-    }
-    else {
-        this.setState({inputState: this.state.inputState + 1});
-    }
-    
-}        
+  handleNameChange = (e, index) => {
+    let inputArray = [...this.state.inputArray];
+    inputArray[index].name = e.target.value;
+    this.setState({ inputArray });
+  };
 
-inputCycle = () => {
-    const inputState = this.state.inputState;
-    
-    switch(inputState) {
-        case 0:
-            return (
-                <div>
-                  <button type="button" onClick={this.switchState}>next</button>
-                  <p>case 0</p>
-                  <p>{JSON.stringify(this.state)}</p>
-                </div>
-              ) 
-               
-        case 1:
-            return (
-                <div>
-                <button type="button" onClick={this.switchState}>next</button>;
-                <p>case 1</p>
-                <p>{JSON.stringify(this.state)}</p>
-                </div>
-            ) 
-        case 2:
-            return (
-                <div>
-                <button type="button" onClick={this.switchState}>next</button>;
-                <p>case 2</p>
-                <p>{JSON.stringify(this.state)}</p>
-                </div>
-            ) 
-        default:
-            return (
-                <div>
-                <button type="button" onClick={this.switchState}>next</button>;
-                <p>Invalid</p>
-                <p>{JSON.stringify(this.state)}</p>
-                </div>
-            ) 
-    }
+  handleValueChange = (e, index) => {
+    let inputArray = [...this.state.inputArray];
+    inputArray[index].value = e.target.value;
+    this.setState({ inputArray });
+  };
 
-}
+  addInput = () => {
+    if (this.state.showInputs === false)
+      {
+        this.setState({showInputs: true})
+      }
+      else {
+        this.setState({
+          inputArray: [...this.state.inputArray, { name: "", value: "" }],
+          currentInput: this.state.currentInput + 1
+        });
+      }
+  };
+  
 
-render() {
+  renderInput = (input, index) => {
+    return (
+      <div key={index}>
+        <p>Enter Name</p>
+        <input value={input.name} onChange={e => this.handleNameChange(e, index)} />
+        <p>Enter Value</p>
+        <input value={input.value} onChange={e => this.handleValueChange(e, index)} />
+        <br />
+      </div>
+    );
+  };
+  render() {
     return (
       <div>
-        {this.state.inputName.map(input => (
-          <this.inputCycle key={input} />
-        ))}
+        {this.state.showInputs ? this.state.inputArray.map((input, index) => this.renderInput(input, index)) : null}
+        <br />
+        <button type="button" onClick={this.addInput}>
+          Add Input
+        </button>
+        <p>{JSON.stringify(this.state)}</p>
       </div>
     );
   }
-  
-
-
 }
-
 
 export default AddImputButton;
